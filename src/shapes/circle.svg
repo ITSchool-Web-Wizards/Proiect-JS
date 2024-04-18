@@ -1,0 +1,10 @@
+<svg viewBox="0 0 300 150" width="300" height="150" xmlns="http://www.w3.org/2000/svg">
+<circle
+cx="150"
+cy="75"
+fill="transparent"
+r="120"
+stroke="black"
+stroke-width="15"
+/>
+</svg>

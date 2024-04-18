@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Paint Simple</title>
+    <link href="./css/style.css" rel="stylesheet" />
+    <meta content="" name="description" />
+    <link href="/favicon.ico" rel="icon" sizes="any" />
+    <link href="/icon.svg" rel="icon" type="image/svg+xml" />
+    <link href="icon.png" rel="apple-touch-icon" />
+    <link href="site.webmanifest" rel="manifest" />
+    <meta content="#fafafa" name="theme-color" />
+
+    <script type="module" src="./js/main.js"></script>
+    <link rel="stylesheet" href="scss/styles.scss">
+
+  </head>
+  <body>
+    <header>
+      <nav class="navigation" role="navigation">
+        <ul>
+          <li>
+            <img src="icon.png" alt="paint icon" height="100%" width="23rem" />
+          </li>
+          <li>
+            <a href="#" id="file-nav">File</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-menu-item">
+                <a href="#">New</a>
+              </li>
+              <li class="dropdown-menu-item">
+                <a href="#">Open</a>
+              </li>
+              <li class="dropdown-menu-item">
+                <a href="#">
+                  <img
+                    src="./img/navigation-bar/save.svg"
+                    width="10rem"
+                    height="10rem"
+                    alt="Save"
+                  />Save
+                </a>
+              </li>
+              <li class="dropdown-menu-item">
+                <a href="#">Save As</a>
+              </li>
+              <li class="dropdown-menu-item">
+                <a href="#">Print</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">View</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <img
+              src="./img/navigation-bar/save.svg"
+              width="20rem"
+              height="20rem"
+              alt="Save"
+            />
+          </li>
+          <li>
+            <img
+              src="./img/navigation-bar/undo.svg"
+              width="20rem"
+              height="20rem"
+              alt="Undo"
+            />
+          </li>
+          <li>
+            <img
+              src="./img/navigation-bar/redo.svg"
+              width="20rem"
+              height="20rem"
+              alt="Redo"
+            />
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="toolbar">
+
+      <!-- TOOLS -->
+      <div class="tools">
+        <div class="tool-wrapper">
+          <div>
+            <!-- pencil -->
+            <img alt="pencil-tool" src="img/tools/pencil-tool.svg" />
+          </div>
+          <div>
+            <!-- fill with color -->
+            <img
+              alt="paint-bucket-tool"
+              src="img/tools/paint-bucket-tool.svg"
+            />
+          </div>
+          <div>
+            <!-- text -->
+            <img alt="text-tool" src="img/tools/text-tool.svg" />
+          </div>
+          <div>
+            <!-- eraser -->
+            <img alt="eraser-tool" src="img/tools/eraser-tool.svg" />
+          </div>
+        </div>
+        <h3 class="tools-header">tools</h3>
+      </div>
+      <!-- TOOLS -->
+
+
+      <!-- BRUSHES -->
+      <div class="brushes">
+        <div class="brushes-wrapper">
+          <div>
+            <!-- brush -->
+            <img alt="brush" src="img/brushes/brush.svg" />
+          </div>
+          <div>
+            <!-- airbrush -->
+            <img alt="airbrush" src="img/brushes/airbrush.svg" />
+          </div>
+          <div>
+            <!-- marker -->
+            <img alt="marker" src="img/brushes/marker.svg" />
+          </div>
+        </div>
+        <h3 class="brushes-header">brushes</h3>
+      <!-- BRUSHES -->
+
+
+        <!-- SHAPES -->
+      </div>
+      <div class="shapes">
+        <div class="shapes-wrapper">
+          <div>
+            <img src="./shapes/line.svg" alt="line" />
+          </div>
+          <div>
+            <img src="./shapes/path.svg" alt="path" />
+          </div>
+          <div>
+            <img src="./shapes/circle.svg" alt="circle" />
+          </div>
+          <div>
+            <img src="./shapes/rectangle.svg" alt="rectangle" />
+          </div>
+          <div>
+            <img src="./shapes/polygon.svg" alt="five pointed star" />
+          </div>
+          <div>
+            <img src="./shapes/triangle.svg" alt="triangle" />
+          </div>
+          <div>
+            <img src="./shapes/hexagon.svg" alt="hexagon" />
+          </div>
+        </div>
+        <h3 class="shapes-header">shapes</h3>
+      </div>
+      <!-- SHAPES -->
+
+
+      <!-- COLORS -->
+      <div class="colors">
+        <!--    display using grid  -->
+        <div class="colors-palette">
+          <div class="colors-palette-wrapper">
+            <img alt="white color" src="/img/color-palette/white.png" />
+            <img alt="black color" src="/img/color-palette/black.png" />
+            <img alt="gray color" src="/img/color-palette/gray.png" />
+            <img alt="red color" src="/img/color-palette/red.png" />
+            <img alt="yellow color" src="/img/color-palette/yellow.png" />
+            <img alt="gold color" src="/img/color-palette/gold.png" />
+            <img alt="orange color" src="/img/color-palette/orange.png" />
+            <img alt="brown color" src="/img/color-palette/brown.png" />
+            <img alt="green color" src="/img/color-palette/green.png" />
+            <img alt="blue color" src="/img/color-palette/blue.png" />
+            <img alt="indigo color" src="/img/color-palette/indigo.png" />
+          </div>
+        </div>
+        <h3 class="colors-header">colors</h3>
+      </div>
+      <!-- COLORS -->
+
+
+    </div>
+    <div>
+      <!--  <canvas id="canvas-container" width="300" height="300">This is canvas</canvas>-->
+    </div>
+  </body>
+</html>
