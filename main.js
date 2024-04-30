@@ -64,9 +64,9 @@ function chooseDifficulty(){
 			NumberOfCards = 12;
 			difficulty = 'easy';
 			input.nextElementSibling.classList.add('checked');
-		} else if (input.value === 'medium' && input.checked === true) {
+		} else if (input.value === 'normal' && input.checked === true) {
 			NumberOfCards = 24;
-			difficulty = 'medium';
+			difficulty = 'normal';
 			input.nextElementSibling.classList.add('checked');
 		} else if (input.value === 'hard' && input.checked === true) {
 			NumberOfCards = 36;
@@ -77,12 +77,16 @@ function chooseDifficulty(){
 }
 
 function stopwatch(){
-	sec+=1;
-	if (sec<60) {
-		timer.innerText = sec;
-	} else if (sec<3600) {
-		let minutes = Math.floor(sec/60);
-		let seconds = sec % 60;
+	sec += 1;
+	let minutes = Math.floor(sec/60);
+	let seconds = sec % 60;
+	if (sec<10) {
+		timer.innerText = "00:0"+sec;
+	}
+	else if (sec<60) {
+		timer.innerText = "00:"+sec;
+	}
+	else if (sec<3600) {
 		timer.innerText = minutes+":"+seconds;
 	}
 }
@@ -96,7 +100,7 @@ function checkwin(num) {
 				won = true;
 			};
 			break;
-		case 'medium' :
+		case 'normal' :
 			if (num === 12) {
 				won = true;	
 			};
@@ -115,7 +119,7 @@ function checkwin(num) {
 			modal.classList.remove('hide');
 			//stop the stopwatch
 			clearInterval(setTimer);
-		}, 1000);
+		}, 500);
 	}
 }
 
@@ -155,7 +159,7 @@ function matchChecker(event){
 				});
 			} else {
 				console.log('not match');
-				//wait 1 second before turning the cards that don't match
+				//wait before turning the cards that don't match
 				setTimeout(() => {
 					cardMatch = [];
 					[].forEach.call(selectedCards, c =>{
@@ -175,7 +179,7 @@ function startGame() {
 	sec = 0; 
 	moves = 0;
 	correctMoves = 0;
-	timer.innerText = '0';
+	timer.innerText = '00:00';
 	document.getElementById('moves').innerHTML = '0';
 	modal.classList.add('hide');
 	clearInterval(setTimer);
