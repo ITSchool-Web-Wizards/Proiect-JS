@@ -23,18 +23,23 @@ body {
   display: grid;
   grid-template-columns: auto minmax(1025px, 1440px) auto;
   background: var(--dark-accent-color);
+  @media (width < 1024px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .wrapper {
   grid-column: 2/3;
   font-family: Roboto Slab;
+  padding: 2rem;
 }
 
 h1,
 h3 {
   font-family: Pacifico;
   font-weight: 400;
-  font-size: 6rem;
+  font-size: clamp(3rem, 5vw + 0.5rem, 6rem);
 }
 
 h1 {
@@ -55,8 +60,16 @@ h1 {
 .info {
   display: grid;
   grid-template-columns: auto;
+  gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
+  @media (width < 700px) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-block-end: 1rem;
+  }
 }
 
 /* -----DASHBOARD----- */
@@ -70,6 +83,10 @@ h1 {
   color: rgba(255, 255, 255, 1);
   padding-block: 1.5rem;
 
+  @media (width < 800px) {
+    font-size: 1.25rem;
+  }
+
   &-element {
     cursor: default;
     display: flex;
@@ -81,8 +98,16 @@ h1 {
     border-radius: 1rem;
     padding: 1rem 2rem;
 
+    @media (width < 800px) {
+      padding: 0.5rem 1rem;
+    }
+
     span:first-of-type {
       font-size: 2rem;
+
+      @media (width < 800px) {
+        font-size: 1.5rem;
+      }
     }
 
     &:last-of-type {
@@ -109,12 +134,21 @@ h1 {
   padding: 0.75rem;
   align-items: center;
 
+  @media (width < 800px) {
+    font-size: 1.25rem;
+    padding: 0.5rem;
+  }
+
   label {
     cursor: pointer;
     text-align: center;
-    padding: 0.75rem 2.75rem;
+    padding: 0.75rem 2rem;
     border: 0.25rem solid transparent;
     color: rgba(255, 255, 255, 0.24);
+
+    @media (width < 800px) {
+      padding: 0.5rem 1.5rem;
+    }
   }
 
   .checked {
@@ -133,17 +167,50 @@ h1 {
 /* -----GAME BOARD----- */
 
 .game-board {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  /* grid idea from kevin powell https://codepen.io/kevinpowell/pen/abMLmeO?editors=1100*/
+  &.easy-game {
+    --column-count: 4;
+  }
+
+  &.normal-game {
+    --column-count: 6;
+  }
+
+  &.hard-game {
+    --column-count: 9;
+  }
+
+  --min-column-size: 5rem;
+  --gap: 1.5rem;
+
+  /* calculations */
+  --breakpoint: calc(var(--min-column-size) * var(--column-count) + (var(--gap) * (var(--column-count) - 1)));
+  --column-size: calc((100% / var(--column-count)) - var(--gap));
+
+  display: grid;
+  gap: var(--gap);
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      min(max(var(--column-size), (100% - var(--breakpoint)) * -999), 100%),
+      1fr
+    )
+  );
+
   justify-content: center;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+
+  @media (width < 700px) {
+    --gap: 0.5rem;
+  }
+    @media (width < 700px) {
+    &.hard-game {
+      --column-count: 6;
+    }
+  }
 }
 
 .icon {
-  width: 30%;
-  height: 30%;
   color: var(--dark-accent-color);
   display: flex;
   justify-content: center;
@@ -152,6 +219,7 @@ h1 {
 
 .card-container {
   position: relative;
+  aspect-ratio: 1;
 }
 
 .card {
@@ -163,8 +231,12 @@ h1 {
   align-items: center;
   border-radius: 10%;
   backface-visibility: hidden;
-  background: linear-gradient(225deg,rgba(98, 189, 218, 0.16) 0%, rgba(67, 38, 91, 0.16) 100%),
-            rgba(67, 38, 91, 1);
+  background: linear-gradient(
+      225deg,
+      rgba(98, 189, 218, 0.16) 0%,
+      rgba(67, 38, 91, 0.16) 100%
+    ),
+    rgba(67, 38, 91, 1);
   border: 0.25rem solid rgba(255, 255, 255, 0.08);
 }
 
@@ -173,31 +245,16 @@ h1 {
   background: var(--light-neutral-color);
 }
 
-.easy {
-  aspect-ratio: 1;
-  width: 19%;
-
-  .icon {
-    font-size: 10rem;
-  }
+.easy .icon {
+  font-size: 10rem;
 }
 
-.normal {
-  aspect-ratio: 1;
-  width: 15%;
-
-  .icon {
-    font-size: 7rem;
-  }
+.normal .icon {
+  font-size: 7rem;
 }
 
-.hard {
-  aspect-ratio: 1;
-  width: 9%;
-
-  .icon {
-    font-size: 5rem;
-  }
+.hard .icon {
+  font-size: 5rem;
 }
 
 .front-open,
@@ -223,8 +280,9 @@ h1 {
   position: absolute;
   inset: 0;
   z-index: 1;
-  padding-block-start: 20vh;
+  padding-block-start: clamp(5rem, 20vh, 20rem);
   backdrop-filter: blur(1rem);
+  margin-inline: 1rem;
 }
 
 .modal-inner {
@@ -236,6 +294,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   font-size: 1.5rem;
+  
+  @media (width < 700px) {
+      font-size: 1rem;
+      padding: 1rem 5rem;
+  }
 
   h3 {
     color: var(--color2);
@@ -246,7 +309,7 @@ h1 {
       font-weight: 700;
     }
   }
-  
+
   p:last-of-type {
     display: flex;
     justify-content: center;
@@ -261,12 +324,18 @@ h1 {
     padding: 1rem 2rem;
     color: white;
     margin-top: 3rem;
+    @media (width < 700px) {
+        margin-top: 1.5rem;
+    }
     span {
       font-size: 2rem;
+      @media (width < 700px) {
+        font-size: 1.5rem;
+      }
     }
   }
 }
 
-.hide {
-  display: none;
-}
+// .hide {
+//   display: none;
+// }

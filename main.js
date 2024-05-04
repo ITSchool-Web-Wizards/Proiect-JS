@@ -64,14 +64,20 @@ function chooseDifficulty(){
 			NumberOfCards = 12;
 			difficulty = 'easy';
 			input.nextElementSibling.classList.add('checked');
+			board.classList.remove('normal-game', 'hard-game');
+			board.classList.add('easy-game');
 		} else if (input.value === 'normal' && input.checked === true) {
 			NumberOfCards = 24;
 			difficulty = 'normal';
 			input.nextElementSibling.classList.add('checked');
+			board.classList.remove('easy-game', 'hard-game');
+			board.classList.add('normal-game');
 		} else if (input.value === 'hard' && input.checked === true) {
 			NumberOfCards = 36;
 			difficulty = 'hard';
 			input.nextElementSibling.classList.add('checked');
+			board.classList.remove('easy-game', 'normal-game');
+			board.classList.add('hard-game');
 		}
 	});
 }
