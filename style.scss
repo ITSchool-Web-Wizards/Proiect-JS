@@ -200,10 +200,10 @@ h1 {
 
   justify-content: center;
 
-  @media (width < 700px) {
+  @media (width < 1024px) {
     --gap: 0.5rem;
   }
-    @media (width < 700px) {
+    @media (width < 976px) {
     &.hard-game {
       --column-count: 6;
     }
