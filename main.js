@@ -173,7 +173,7 @@ function matchChecker(event){
 						c.nextElementSibling.classList.remove('back-open');
 						selectedCards = [];
 					});
-				}, 1000);
+				}, 750);
 			}
 		}
 	}
