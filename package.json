@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "currency-code-converter": "^1.0.3"
+    
   },
   "devDependencies": {
     "vite": "^5.2.11"
