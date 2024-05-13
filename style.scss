@@ -221,26 +221,12 @@ h1 {
     --column-count: 9;
   }
 
-  --min-column-size: 1rem;
   --gap: 1.5rem;
-
-  /* calculations */
-  --breakpoint: calc(
-    var(--min-column-size) * var(--column-count) +
-      (var(--gap) * (var(--column-count) - 1))
-  );
-  --column-size: calc((100% / var(--column-count)) - var(--gap));
 
   display: grid;
   gap: var(--gap);
 
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(
-      min(max(var(--column-size), (100% - var(--breakpoint)) * -999), 100%),
-      1fr
-    )
-  );
+  grid-template-columns: repeat(var(--column-count), 1fr);
 
   justify-content: center;
 
