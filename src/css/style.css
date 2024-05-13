@@ -25,7 +25,8 @@ html:focus-within {
 
 html,
 body {
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Set core body defaults */
@@ -289,7 +290,7 @@ textarea {
 
 .navigation {
   overflow: hidden;
-  background: #a3a3a3;
+  background: #c3c3c3;
 }
 
 .navigation li {
@@ -311,8 +312,6 @@ textarea {
 
 .navigation li:hover {
   text-decoration: none;
-
-
   background:rgb(66, 111, 226);
   cursor: pointer;
 }
@@ -353,6 +352,8 @@ ul li:focus-within > ul,
 .toolbar {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
+  background-color: #c3c3c3;
 }
 /* TOOLBAR */
 
@@ -379,10 +380,23 @@ ul li:focus-within > ul,
   height: auto;
   max-width: 1.5rem;
   width: 100%;
+  cursor: pointer;
+}
+
+.tool-wrapper div:hover{
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
 }
 
 .tools-header {
   text-align: center;
+}
+
+.tool-icon.selected {
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
 }
 
 
@@ -392,15 +406,31 @@ ul li:focus-within > ul,
 /* BRUSHES */
 
 .brushes-wrapper {
+  max-width: 5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 1.5rem;
-  grid-gap: .5rem;
+  grid-template-rows: repeat(2, auto);
+  gap: .5rem;
+}
+
+.brushes-wrapper > div {
+  display: flex;
+  flex-direction: column ;
+  align-items: center;
 }
 
 .brushes-wrapper img {
+  display: block;
   height: auto;
-  width: 1.5rem;
+  max-width: 1.5rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.brushes-wrapper div:hover {
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
 }
 
 .brushes-header {
@@ -427,6 +457,13 @@ ul li:focus-within > ul,
  height: 1.5rem;
   width: 100%;
   max-width: 1.5rem;
+  cursor: pointer;
+}
+
+.shapes-wrapper div:hover {
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
+  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
 }
 
 .shapes-header {
@@ -444,13 +481,18 @@ ul li:focus-within > ul,
   grid-auto-rows: minmax(1.5rem, auto);
   overflow: hidden;
   max-height: 3.5rem;
-  gap: .5rem;;
+  gap: .5rem;
 }
 
 .colors-palette-wrapper img {
   width: 100%;
   height: 100%;
   max-width: 1.5rem;
+  cursor: pointer;
+}
+
+.colors-palette-wrapper img:hover {
+ border: 2px solid #c3c3c3;
 }
 
 .colors-header {
@@ -458,3 +500,16 @@ ul li:focus-within > ul,
 }
 
 /* COLORS */
+
+/*CANVAS*/
+.canvas-container {
+  height: 100vh;
+  background: #a1c8f7;
+}
+
+.canvas-container canvas {
+  height: 100%;
+  background-color: #999;
+}
+
+/*CANVAS*/
