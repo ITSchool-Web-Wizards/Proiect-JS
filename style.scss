@@ -208,7 +208,6 @@ h1 {
 /* -----GAME BOARD----- */
 
 .game-board {
-  /* grid idea from kevin powell https://codepen.io/kevinpowell/pen/abMLmeO?editors=1100*/
   &.easy-game {
     --column-count: 4;
   }
@@ -220,16 +219,12 @@ h1 {
   &.hard-game {
     --column-count: 9;
   }
-
   --gap: 1.5rem;
-
   display: grid;
   gap: var(--gap);
-
   grid-template-columns: repeat(var(--column-count), 1fr);
-
   justify-content: center;
-
+  
   @media (width < 1024px) {
     --gap: 0.5rem;
   }
