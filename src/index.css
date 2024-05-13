@@ -43,6 +43,7 @@ h1 {
 }
 
 h3 {
+  color: #fff;
   margin-right: 2rem;
   font-size: 1.5rem;
 }
@@ -50,6 +51,7 @@ h3 {
 button,
 select,
 input {
+  outline: 0;
   background-color: #fff;
   color: black;
   font-family: inherit;
@@ -63,8 +65,13 @@ input {
 }
 
 .add-form button {
+  color: #fff;
   text-transform: uppercase;
   background-color: #b91717;
+}
+
+.add-form button:hover {
+  background-color: red;
 }
 
 .list {
@@ -85,6 +92,12 @@ input {
   font-size: 0.8rem;
   font-weight: 700;
   margin: 0 0.5rem;
+}
+
+.actions button:hover,
+.list select:hover {
+  transform: scale(1.04);
+  transition: 0.2s ease-in;
 }
 
 .list ul {
@@ -124,4 +137,62 @@ input[type="checkbox"] {
   text-align: center;
   font-weight: 700;
   padding: 2rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .list ul {
+    margin-inline-start: 10rem;
+    width: 90%;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  button,
+  select,
+  input {
+    border-radius: 6rem;
+    padding: 0.4rem 1rem;
+    font-weight: 700;
+    font-size: 0.6rem;
+    cursor: pointer;
+    margin-block: 0.5rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions button {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.6rem;
+    margin-block: 2rem;
+  }
+
+  .add-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .list ul {
+    width: 80%;
+    margin-inline-start: 20rem;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  h3 {
+    font-size: 1rem;
+  }
 }
