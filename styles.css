@@ -1,0 +1,79 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(220, 223, 71);
+}
+
+.container {
+  display: flex;
+  position: absolute;
+  transform: translate(-60%, -60%);
+  left: 50%;
+  top: 60%;
+  padding: 5.2em 1.3em 1.3em 1.3em; /* Mărit cu aproximativ 30% */
+  border-radius: 0.8em;
+  background-color: #4a4a4a;
+ 
+}
+
+.white-key {
+  width: 5.68em;  
+  height: 22.75em;  
+  background-color: #ffffff;
+  border-radius: 0 0 0.39em 0.39em;
+  border: 2px solid #24272e;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+
+.black-key {
+  width: 3.25em;  
+  height: 13em;  
+  border-radius: 0 0 0.39em 0.39em;
+  box-sizing: border-box;
+  position: absolute;
+  background-color: #070a0f;
+  cursor: pointer;
+}
+
+button {
+  position: fixed;
+  top: 33px;
+  right: 33px;
+  padding: 15px 25px;
+  font-size: 23px;
+  color: #000000;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+ 
+
+.white-key:active, .white-key.hover-effect {
+  background-color: #c03232;  
+}
+
+.black-key:active, .black-key.hover-effect {
+  background-color: #cc2e2e;  
+}
+ 
+.black-key:nth-child(1) { left: 5.2em; }
+.black-key:nth-child(2) { left: 10.88em; }
+.black-key:nth-child(3) { left: 22.26em; }
+.black-key:nth-child(4) { left: 27.95em; }
+.black-key:nth-child(5) { left: 33.63em; }
+.black-key:nth-child(6) { left: 45.01em; }
+.black-key:nth-child(7) { left: 50.7em; }
+.black-key:nth-child(8) { left: 62.08em; }
+.black-key:nth-child(9) { left: 67.76em; }
+.black-key:nth-child(10) { left: 73.45em; }
+
+
+ 
