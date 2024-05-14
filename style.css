@@ -1,0 +1,167 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    border: none;
+    outline: none;
+  }
+
+  body {
+    background-color: #98b22d;
+  }
+
+  .wrapper {
+    width: 90%;
+    max-width: 25rem;
+    background-color: #ffffff;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    padding: 2rem;
+    border-radius: 0.8rem;
+  }
+
+  .app-details {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .exchange {
+    width: 10rem;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+  }
+
+  input#amount {
+    font-weight: 400;
+    font-size: 1.2rem;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #02002c;
+    color: #437837;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+  }
+
+  input#amount:focus {
+    color: #437837;
+    border-color: #437837;
+  }
+
+  .dropdowns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #437837;
+    color: #ffffff;
+  }
+
+  select option {
+    background-color: #ffffff;
+    color: #02002c;
+  }
+
+  button {
+    font-size: 1rem;
+    width: 100%;
+    background-color: #437837;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    border-radius: 0.3rem;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  #result {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: #02002c;
+    background-color: #2fac10;
+    padding: 0.8rem 0;
+  }
+
+ @media (width : 425px) {
+    .exchange{
+      width: 5rem;
+    }
+    .app-title {
+      font-size: 1rem;
+  }
+  input#amount {
+    font-size: 0.9rem;
+    border-bottom: 1px solid #02002c;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem;
+  }
+
+  button {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (width : 375px) {
+  .exchange{
+    width: 4rem;
+  }
+  .app-title {
+    font-size: 1rem;
+}
+input#amount {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #02002c;
+  margin-bottom: 0.3rem;
+  padding: 0.3rem;
+}
+
+button {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+}
+
+@media (width : 320px) {
+  .exchange{
+    width: 4rem;
+  }
+  
+  .app-title {
+    font-size: 1rem;
+}
+input#amount {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #02002c;
+  margin-bottom: 0.3rem;
+  padding: 0.3rem;
+}
+
+button {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+}
+
