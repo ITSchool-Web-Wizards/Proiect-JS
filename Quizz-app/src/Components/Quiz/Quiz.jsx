@@ -10,13 +10,13 @@ const Quiz = () => {
     let [lock, setlock] = useState(false);
     let [score, setScore] = useState(0);
 
-    let option1 = useRef(null);
-    let option2 = useRef(null);
-    let option3 = useRef(null);
-    let option4 = useRef(null);
+    const option1 = useRef(null);
+    const option2 = useRef(null);
+    const option3 = useRef(null);
+    const option4 = useRef(null);
 
     let optionArray = [option1, option2, option3, option4];
-    
+
     const checkAnswer = (e, answer) => {
         if (lock === false) {
             e.target.classList.add("lock")
