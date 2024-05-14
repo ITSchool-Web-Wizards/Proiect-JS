@@ -135,49 +135,51 @@ function checkwin(num) {
 //-----CORE OF THE GAME - CHECKING CARDS AND COUNTING MOVES
 function matchChecker(event){
 	//making sure the clicked target is a card and prevent doubleclicking
-	if (event.target.classList.contains("card") && !event.target.classList.contains("front-open")) {
-		//flip the card on click
-		event.target.classList.add("front-open");
-		event.target.nextElementSibling.classList.add("back-open");
-		//keep track of the attribute name (card name) of the clicked cards
-		cardMatch.push(event.target.nextElementSibling.firstChild.getAttribute("name"));
-		selectedCards.push(event.target);
-		moveCount += 1;
-		//allow only two cards to be selected, then verify if they match match
-		if (moveCount === 2) {
-			moveCount = 0;
-			//2 clicks make move count go up by 1
-			moves += 1;
-			document.getElementById("moves").innerHTML = moves;
-			//stop from clicking cards for 1 second while the 2 already clicked cards are checked
-			board.removeEventListener("click", matchChecker);
-			setTimeout(() => {
-				board.addEventListener("click", matchChecker);
-			}, 1000);
-			if (cardMatch[0]===cardMatch[1]) {
-				console.log("match");
-				correctMoves += 1;
-				//check if game is won
-				checkwin(correctMoves);
-				cardMatch = [];
-				//keep the matched cards up byadding a class to them
-				[].forEach.call(selectedCards, correct => {
-					correct.classList.add("front-correct");
-					correct.nextElementSibling.classList.add("back-correct");	
-				});
-			} else {
-				console.log("not match");
-				//wait before turning the cards that don"t match
-				setTimeout(() => {
-					cardMatch = [];
-					[].forEach.call(selectedCards, c =>{
-						c.classList.remove("front-open");
-						c.nextElementSibling.classList.remove("back-open");
-						selectedCards = [];
-					});
-				}, 750);
-			}
-		}
+	if (!event.target.classList.contains("card") || event.target.classList.contains("front-open")) {
+		return
+	}
+	//flip the card on click
+	event.target.classList.add("front-open");
+	event.target.nextElementSibling.classList.add("back-open");
+	//keep track of the attribute name (card name) of the clicked cards
+	cardMatch.push(event.target.nextElementSibling.firstChild.getAttribute("name"));
+	selectedCards.push(event.target);
+	moveCount += 1;
+	//allow only two cards to be selected, then verify if they match match
+	if (moveCount != 2) {
+		return;
+	}
+	moveCount = 0;
+	//2 clicks make move count go up by 1
+	moves += 1;
+	document.getElementById("moves").innerHTML = moves;
+	//stop from clicking cards for 1 second while the 2 already clicked cards are checked
+	board.removeEventListener("click", matchChecker);
+	setTimeout(() => {
+		board.addEventListener("click", matchChecker);
+	}, 1000);
+	if (cardMatch[0]===cardMatch[1]) {
+		console.log("match");
+		correctMoves += 1;
+		//check if game is won
+		checkwin(correctMoves);
+		cardMatch = [];
+		//keep the matched cards up byadding a class to them
+		[].forEach.call(selectedCards, correct => {
+			correct.classList.add("front-correct");
+			correct.nextElementSibling.classList.add("back-correct");	
+		});
+	} else {
+		console.log("not match");
+		//wait before turning the cards that don"t match
+		setTimeout(() => {
+			cardMatch = [];
+			[].forEach.call(selectedCards, c =>{
+				c.classList.remove("front-open");
+				c.nextElementSibling.classList.remove("back-open");
+				selectedCards = [];
+			});
+		}, 750);
 	}
 }
 
