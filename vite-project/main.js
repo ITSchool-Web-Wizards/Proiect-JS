@@ -1,7 +1,9 @@
 import './style.css';
 
 const cityInput = document.querySelector(".city-input");
+const locationButton = document.querySelector(".location-btn");
 const searchButton = document.querySelector(".search-btn");
+
 const weatherCardsDiv = document.querySelector(".weather-cards");
 const currentWeatherDiv = document.querySelector(".current-weather");
 
@@ -83,4 +85,26 @@ const getCityCoordinates = () => {
         });
 };
 
-searchButton.addEventListener("click", getCityCoordinates);
+
+
+
+const getUserCoordinates = () =>  {
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            const {latitude, longitude} = position.coords;
+            const REVERSE_GEOCODING_URL =
+     
+        },
+
+        error => {
+            if(error.code === error.PERMISSION_DENIED){
+                alert("Cererea de acces a geolocatiei nu a fost acceptata. Te rog sa resetezi permisiunile si sa incerci din nou.")
+            }
+        }
+    );
+}
+
+locationButton.addEventListener("click", getCityCoordinates);
+searchButton.addEventListener("click", getUserCoordinates);
+
+
