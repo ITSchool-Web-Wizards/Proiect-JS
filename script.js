@@ -22,7 +22,6 @@ window.onload = () => {
     sustainButton.textContent = sustainEnabled ? "Sustain On" : "Sustain Off";
   };
 
-  // Track which keys are currently pressed
   const keysCurrentlyPressed = {};
 
   for (let index = 1; index <= 24; index++) {
