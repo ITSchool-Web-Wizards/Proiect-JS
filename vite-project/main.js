@@ -38,11 +38,11 @@ const getWeatherDetails = (cityName, lat, lon) => {
     fetch(WEATHER_API_URL) 
         .then(res => res.json()) 
         .then(data => { 
-            // Clear previous weather data 
+            // Ștergere datele meteo anterioare
             weatherCardsDiv.innerHTML = ""; 
             currentWeatherDiv.innerHTML = ""; 
             
-            // Filter forecast for each day 
+            // Filtrare prognoza pentru fiecare zi
             const uniqueForecastDays = []; 
             const fiveDaysForecast = data.list.filter(forecast => { 
                 const forecastDate = new Date(forecast.dt_txt).getDate(); 
@@ -53,7 +53,8 @@ const getWeatherDetails = (cityName, lat, lon) => {
                 return false; 
             }); 
             
-            // Display weather cards 
+            // Afișați carduri meteo
+
             fiveDaysForecast.forEach((weatherItem, index) => { 
                 if (index === 0) { 
                     currentWeatherDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index)); 
@@ -63,14 +64,14 @@ const getWeatherDetails = (cityName, lat, lon) => {
             }); 
         }) 
         .catch(() => { 
-            alert("An error occurred while fetching the weather forecast"); 
+            alert("A apărut o eroare la preluarea prognozei meteo"); 
         }); 
 }; 
 
 const getCityCoordinates = () => { 
     const cityName = cityInput.value.trim(); 
     if (!cityName) 
-        return alert("Please enter a city name"); 
+        return alert("Te rog sa introduci un oraș :D"); 
     const GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API_KEY}`; 
     fetch(GEOCODING_API_URL) 
         .then(res => res.json()) 
@@ -81,7 +82,7 @@ const getCityCoordinates = () => {
             getWeatherDetails(name, lat, lon); 
         }) 
         .catch(() => { 
-            alert("An error occurred while fetching the coordinates!"); 
+            alert("A apărut o eroare la preluarea coordonatelor!"); 
         }); 
 }; 
 
@@ -89,14 +90,16 @@ const getUserCoordinates = () => {
     navigator.geolocation.getCurrentPosition( 
         position => { 
             const {latitude, longitude} = position.coords; 
-            const REVERSE_GEOCODING_URL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`; 
+            const REVERSE_GEOCODING_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`; 
+
             //Reverseaza geocodin si preia nume oras din coordonate. 
+
             fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data => { 
                 const { name} = data[0]; 
                 getWeatherDetails(name, latitude, longitude); 
             }) 
             .catch(() => { 
-                alert("An error occurred while fetching the city!"); 
+                alert("A apărut o eroare la preluarea orașului!"); 
             }); 
         }, 
         error => { 
