@@ -1,12 +1,18 @@
 const canvasContainer = document.querySelector('.canvas-container');
 const canvas = document.getElementById('canvasSignature');
 const context = canvas.getContext('2d');
-const pencilToolButton = document.getElementById('pencilTool');
+// const pencilToolButton = document.getElementById('pencilTool');
+const toolIcons = document.querySelectorAll('.tool-icon');
 
 let isDrawing = false;
-brushWidth = 5;
+let lastX = 0;
+let lastY = 0;
+brushWidth = 3;
 //store drawing content
 let drawingHistory = [];
+let selectedTool = '';
+
+
 
 window.addEventListener("load", () => {
     canvas.width = canvas.offsetWidth;
@@ -14,23 +20,29 @@ window.addEventListener("load", () => {
 })
 
 const draw = (event) => {
-    if (!isDrawing) return;
-    
+    if (!isDrawing || selectedTool !== 'pencilTool') return;
+
     // Store the scaled coordinates
     const x = event.offsetX * (canvas.width / window.innerWidth);
     const y = event.offsetY * (canvas.height / window.innerHeight);
-    
-    // Draw on the canvas
     context.lineTo(x, y);
     context.stroke();
-    
+    // Draw on the canvas
+    // if(selectedTool === 'pencilTool') {
+
+    // } else if(selectedTool === 'rectangle'){
+    //     drawRect(event);
+    // }
+
     // Store drawing content
     drawingHistory.push({ x, y });
 }
 
 const startDrawing = (event) => {
     isDrawing = true;
-    context.lineWidth = brushWidth;
+    [lastX, lastY] = [event.offsetX, event.offsetY];
+    // context.lineWidth = brushWidth;
+    //creating a new path to draw
     // context.beginPath();
     // draw(event);
 }
@@ -38,6 +50,16 @@ const startDrawing = (event) => {
 function stopDrawing() {
     isDrawing = false;
     context.beginPath();
+}
+
+function drawLine(event) {
+    if (!isDrawing) return;
+
+    const mouseX = event.offsetX;
+    const mouseY = event.offsetY;
+
+    context.beginPath();
+    context.moveTo(lastX, lastY);
 }
 
 function resizeCanvas() {
@@ -64,7 +86,6 @@ function resizeCanvas() {
     drawingHistory = tempHistory;
 }
 
-
 // Drawing events
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mousemove', draw);
@@ -77,16 +98,37 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
 // Select Tools Events
-pencilToolButton.addEventListener('click', function() {
-    let toolIcons = document.querySelectorAll('.tool-icon')
-    toolIcons.forEach(icon => icon.classList.remove('selected'));
-
-    this.classList.add('selected');
-
-    selectedTool = 'pencil';
-    context.globalCompositeOperation = 'source-over';
+toolIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        // const isSelected = this.classList.contains('selected');
+        toolIcons.forEach(toolIcon => {
+            toolIcon.classList.remove('selected');
+        });
+        this.classList.add('selected');
+        selectedTool = this.id;
+    })
 })
 
+const pencilToolButton = document.getElementById('pencilTool');
+
+
+// pencilToolButton.addEventListener('click', function() {
+//     let toolIcons = document.querySelectorAll('.tool-icon')
+//     toolIcons.forEach(icon => icon.classList.remove('selected'));
+
+//     this.classList.add('selected');
+
+//     selectedTool = 'pencil';
+//     context.globalCompositeOperation = 'source-over';
+// })
+
+const colorSwatches = document.querySelectorAll(".color-swatch")
+colorSwatches.forEach(swatch => {
+    swatch.addEventListener('click', function() {
+        context.strokeStyle = this.style.backgroundColor;
+        selectedTool = 'pencil';
+    })
+})
 
 // https://blog.openreplay.com/building-a-drawing-application-with-html5-canvas/
 //  https://www.youtube.com/watch?v=y84tBZo8GFo&ab_channel=CodingNepal

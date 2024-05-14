@@ -290,7 +290,7 @@ textarea {
 
 .navigation {
   overflow: hidden;
-  background: #c3c3c3;
+  background: #F5F6F7;
 }
 
 .navigation li {
@@ -312,8 +312,9 @@ textarea {
 
 .navigation li:hover {
   text-decoration: none;
-  background:rgb(66, 111, 226);
+  background:#1979CA;
   cursor: pointer;
+  
 }
 
 .dropdown-menu-item:focus-within a {
@@ -321,7 +322,7 @@ textarea {
 }
 
 .dropdown-menu {
-  background: rgb(66, 111, 226);
+  background: #1979CA;
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -345,6 +346,13 @@ ul li:focus-within > ul,
   width: 100%;
 }
 
+h6 {
+  text-transform: capitalize;
+}
+
+.option {
+  list-style-type: none;
+}
 /* NAVIGATION BAR */
 
 
@@ -353,7 +361,7 @@ ul li:focus-within > ul,
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  background-color: #c3c3c3;
+  background-color: #F5F6F7;
 }
 /* TOOLBAR */
 
@@ -384,9 +392,9 @@ ul li:focus-within > ul,
 }
 
 .tool-wrapper div:hover{
-  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  box-shadow: inset 0px 10px 9px 2px rgb(201, 224, 247);
 }
 
 .tools-header {
@@ -394,9 +402,13 @@ ul li:focus-within > ul,
 }
 
 .tool-icon.selected {
-  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  box-shadow: inset 0px 10px 9px 2px rgb(201, 224, 247);
+}
+
+.tool-icon:hover {
+  cursor: pointer;
 }
 
 
@@ -428,9 +440,9 @@ ul li:focus-within > ul,
 }
 
 .brushes-wrapper div:hover {
-  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  box-shadow: inset 0px 10px 9px 2px rgb(201, 224, 247);
 }
 
 .brushes-header {
@@ -461,9 +473,9 @@ ul li:focus-within > ul,
 }
 
 .shapes-wrapper div:hover {
-  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  -moz-box-shadow: inset 0px 1px 1px 1px rgb(255, 255, 255);
-  box-shadow: inset 0px 10px 9px 2px rgb(255, 255, 255);
+  -webkit-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  -moz-box-shadow: inset 0px 1px 1px 1px rgb(201, 224, 247);
+  box-shadow: inset 0px 10px 9px 2px rgb(201, 224, 247);
 }
 
 .shapes-header {
@@ -489,6 +501,7 @@ ul li:focus-within > ul,
   height: 100%;
   max-width: 1.5rem;
   cursor: pointer;
+  border: 1px solid gray;
 }
 
 .colors-palette-wrapper img:hover {
@@ -504,12 +517,12 @@ ul li:focus-within > ul,
 /*CANVAS*/
 .canvas-container {
   height: 100vh;
-  background: #a1c8f7;
+  background: #474747;
 }
 
 .canvas-container canvas {
   height: 100%;
-  background-color: #999;
+  background-color: #ffffff;
 }
 
 /*CANVAS*/
