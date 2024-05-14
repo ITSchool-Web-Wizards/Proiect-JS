@@ -1,4 +1,4 @@
-let api = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
+const api = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
 const fromDropDown = document.getElementById("from-currency-select");
 const toDropDown = document.getElementById("to-currency-select");
 
@@ -33,8 +33,8 @@ let convertCurrency = () => {
     fetch(api)
       .then((resp) => resp.json())
       .then((data) => {
-        let fromExchangeRate = data.conversion_rates[fromCurrency];
-        let toExchangeRate = data.conversion_rates[toCurrency];
+        const fromExchangeRate = data.conversion_rates[fromCurrency];
+        const toExchangeRate = data.conversion_rates[toCurrency];
         const convertedAmount = (amount / fromExchangeRate) * toExchangeRate;
         result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount.toFixed(
           2
