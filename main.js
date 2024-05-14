@@ -1,13 +1,13 @@
 const toolsBtn = document.querySelectorAll('.tool');
- canvas = document.querySelector('canvas');
- colorFill = document.querySelector('#fill-color');
- sizeSlider = document.querySelector('#size-slider');
- colorBtns = document.querySelectorAll('.color .option');
- colorPicker = document.querySelector('#color-picker');
- clearCanvas = document.querySelector('.clear-board');
- saveCanvas = document.querySelector('.save-board');
- redoCanvas = document.querySelector('.redo-board');
- undoCanvas = document.querySelector('.undo-board');
+const canvas = document.querySelector('canvas');
+const colorFill = document.querySelector('#fill-color');
+const sizeSlider = document.querySelector('#size-slider');
+const colorBtns = document.querySelectorAll('.color .option');
+const colorPicker = document.querySelector('#color-picker');
+const clearCanvas = document.querySelector('.clear-board');
+const saveCanvas = document.querySelector('.save-board');
+const redoCanvas = document.querySelector('.redo-board');
+const undoCanvas = document.querySelector('.undo-board');
 
 const ctx = canvas.getContext("2d");
 
@@ -44,22 +44,22 @@ const drawRect = (e) => {
 }
 
 const drawCircle = (e) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(snapShot, 0, 0);
     ctx.beginPath();
     const radius = Math.sqrt(Math.pow(prevMouseX - e.offsetX, 2) + Math.pow(prevMouseY - e.offsetY, 2));
-    ctx.arc(prevMouseX, prevMouseY, radius, 0,2*Math.PI);
+    ctx.arc(prevMouseX, prevMouseY, radius, 0, 2*Math.PI);
 
     if (colorFill.checked) {
-
         ctx.fill();
-    }
-
-    else {
-
+    } else {
         ctx.stroke();
     }
 }
 
 const drawTriangle = (e) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(snapShot, 0, 0);
     ctx.beginPath();
     ctx.moveTo(prevMouseX, prevMouseY);
     ctx.lineTo(e.offsetX, e.offsetY);
@@ -67,8 +67,7 @@ const drawTriangle = (e) => {
     ctx.closePath();
     if (colorFill.checked) {
         ctx.fill();
-    }
-    else {
+    } else {
         ctx.stroke();
     }
 }
