@@ -11,11 +11,11 @@ export default function Stats({ items }) {
 
   if (numPacked === 0)
     return (
-      <p className="stats">
+      <footer className="stats">
         <em>{`You have ${numItems} ${
           numItems === 1 ? "item" : "items"
         } on your list, and you packed none yet`}</em>
-      </p>
+      </footer>
     );
 
   return (
