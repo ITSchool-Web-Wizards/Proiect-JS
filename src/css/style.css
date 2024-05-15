@@ -314,7 +314,6 @@ textarea {
   text-decoration: none;
   background:#1979CA;
   cursor: pointer;
-  
 }
 
 .dropdown-menu-item:focus-within a {
@@ -350,9 +349,6 @@ h6 {
   text-transform: capitalize;
 }
 
-.option {
-  list-style-type: none;
-}
 /* NAVIGATION BAR */
 
 
@@ -360,6 +356,7 @@ h6 {
 .toolbar {
   display: flex;
   flex-direction: row;
+  /* align-items: center; */
   gap: 1rem;
   background-color: #F5F6F7;
 }
@@ -397,8 +394,13 @@ h6 {
   box-shadow: inset 0px 10px 9px 2px rgb(201, 224, 247);
 }
 
+.tools {
+  display: grid;
+}
+
 .tools-header {
   text-align: center;
+  margin-block-start: auto;
 }
 
 .tool-icon.selected {

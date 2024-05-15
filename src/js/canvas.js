@@ -1,12 +1,9 @@
 const canvasContainer = document.querySelector('.canvas-container');
 const canvas = document.getElementById('canvasSignature');
 const context = canvas.getContext('2d');
-// const pencilToolButton = document.getElementById('pencilTool');
 const toolIcons = document.querySelectorAll('.tool-icon');
 
 let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
 brushWidth = 3;
 //store drawing content
 let drawingHistory = [];
@@ -20,46 +17,35 @@ window.addEventListener("load", () => {
 })
 
 const draw = (event) => {
-    if (!isDrawing || selectedTool !== 'pencilTool') return;
+    if (!isDrawing) return;
 
     // Store the scaled coordinates
     const x = event.offsetX * (canvas.width / window.innerWidth);
     const y = event.offsetY * (canvas.height / window.innerHeight);
-    context.lineTo(x, y);
-    context.stroke();
-    // Draw on the canvas
-    // if(selectedTool === 'pencilTool') {
 
-    // } else if(selectedTool === 'rectangle'){
-    //     drawRect(event);
-    // }
+    // Draw on the canvas based on selected tool
+    if (selectedTool === 'pencilTool') {
+        context.lineTo(x, y);
+        context.stroke();
+    } else if (selectedTool === 'eraserTool') {
+        // Use eraser by drawing with transparency
+        context.clearRect(x - 5, y - 5, 10, 10); // Clear a small square area centered around (x, y)
+    }
 
     // Store drawing content
     drawingHistory.push({ x, y });
-}
+};
 
 const startDrawing = (event) => {
     isDrawing = true;
-    [lastX, lastY] = [event.offsetX, event.offsetY];
     // context.lineWidth = brushWidth;
     //creating a new path to draw
-    // context.beginPath();
-    // draw(event);
+    draw(event);
 }
 
 function stopDrawing() {
     isDrawing = false;
     context.beginPath();
-}
-
-function drawLine(event) {
-    if (!isDrawing) return;
-
-    const mouseX = event.offsetX;
-    const mouseY = event.offsetY;
-
-    context.beginPath();
-    context.moveTo(lastX, lastY);
 }
 
 function resizeCanvas() {
@@ -106,29 +92,26 @@ toolIcons.forEach(icon => {
         });
         this.classList.add('selected');
         selectedTool = this.id;
-    })
+
+        if(selectedTool !== 'eraserTool') {
+            context.globalCompositeOperation = 'source-over';
+        }
+    });
 })
 
-const pencilToolButton = document.getElementById('pencilTool');
-
-
-// pencilToolButton.addEventListener('click', function() {
-//     let toolIcons = document.querySelectorAll('.tool-icon')
-//     toolIcons.forEach(icon => icon.classList.remove('selected'));
-
-//     this.classList.add('selected');
-
-//     selectedTool = 'pencil';
-//     context.globalCompositeOperation = 'source-over';
-// })
-
-const colorSwatches = document.querySelectorAll(".color-swatch")
-colorSwatches.forEach(swatch => {
-    swatch.addEventListener('click', function() {
-        context.strokeStyle = this.style.backgroundColor;
-        selectedTool = 'pencil';
-    })
+// Events for tools
+// pencil
+const pencilTool = document.getElementById('pencilTool');
+pencilTool.addEventListener('mousedown', function() {
+    selectedTool = 'pencilTool';
+    context.globalCompositeOperation = 'source-over';
 })
+//eraser
+const eraserTool = document.getElementById('eraserTool');
+eraserTool.addEventListener('click', function() {
+    selectedTool = 'eraserTool';
+    context.globalCompositeOperation = 'destination-out';
+});
 
 // https://blog.openreplay.com/building-a-drawing-application-with-html5-canvas/
 //  https://www.youtube.com/watch?v=y84tBZo8GFo&ab_channel=CodingNepal
