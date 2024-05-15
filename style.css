@@ -7,10 +7,7 @@
 body {
     background: #fdfcfc;
     padding: 20px;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    scroll-behavior: smooth;
+    overflow-x: hidden; 
 }
 
 .container {
@@ -27,11 +24,11 @@ body {
     width: 100%;
     max-width: 100%;
     height: 800px;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 canvas {
-    overflow: auto;
+    overflow: hidden;
     border: 1px solid black;
     width: 100%;
     height: 100%;
