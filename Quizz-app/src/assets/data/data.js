@@ -1,27 +1,27 @@
 export const data = [
     {
         question: 'Everything is permitted, Nothing is true.',
-        options: ['Answer1test', 'Answer2test', 'Answer3test', 'Answer4test'],
+        options: ['SoulCalibur', "Assassin's Creed", 'Mario', 'Tekken'],
         answer: 1
     },
     {
         question: 'The cake is a lie.',
-        options: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
+        options: ['Mass Effect 2', 'Half-Life', 'Portal', 'Doom'],
         answer: 2
     },
     {
-        question: 'The rights of an individual are not as important as the good of the society.',
-        options: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
+        question: 'No gods or kings. Only man.',
+        options: ['The Elder Scrolls V: Skyrim', 'The Witcher', 'Bioshock', 'Perfect Dark'],
         answer: 2
     },
     {
-        question: 'The ends justify the means.',
-        options: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
+        question: 'There are two ways of arguing with a woman, and neither one works.',
+        options: ['Dark Souls', 'Tetris', 'Sims', 'Red Dead Redemption'],
         answer: 3
     },
     {
-        question: 'The needs of the many outweigh the needs of the few.',
-        options: ['Answer1', 'Answer2', 'Answer3', 'Answer4'],
+        question: 'Hey! Listen',
+        options: ['The Legend of Zelda', 'WoW', 'Diablo II', 'Kingdom Hearts'],
         answer: 0
     }
 ]

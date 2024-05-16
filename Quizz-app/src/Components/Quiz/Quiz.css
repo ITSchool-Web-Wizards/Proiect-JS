@@ -109,13 +109,38 @@
 }
 
 .refresh {
-  background-color: var(--main-color);
+  background-color: orange;
   color: #fff;
   transition: background-color 1s;
 }
 
 .refresh:hover {
-  background-color: #004369;
+  background-color: #bc6e00;
 }
 
+.secondContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
 
+.backButton {
+  margin: auto;
+  width: 13rem;
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.backButton {
+  background-color: var(--main-color);
+  color: #fff;
+  transition: background-color 1s;
+}
+
+.backButton:hover {
+  background-color: #004369;
+}
