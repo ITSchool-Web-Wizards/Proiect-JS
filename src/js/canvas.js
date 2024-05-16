@@ -13,7 +13,7 @@ UndoCanvas.enableUndo(context);
 let isDrawing = false;
 // brushWidth = 3;
 //store drawing content
-let drawingHistory = [];
+// let drawingHistory = [];
 let selectedTool = "";
 let selectedColor = "";
 let prevMouseX, prevMouseY;
@@ -72,7 +72,6 @@ const draw = (event) => {
     // const lerps = 10;
 
     // repeat the random points with lerping
-    // Repeat the random points with lerping
     for (let i = 0; i < 10; i++) {
       // Find the lerped X and Y coordinates
       const lerpX = lerp(prevMouseX, x, i / 10);
@@ -148,6 +147,7 @@ colorSwatches.forEach((colorSwatch) => {
     });
     this.classList.add("selected");
     selectedColor = this.getAttribute("data-color");
+    // context.strokeStyle = selectedColor;
     // console.log(selectedColor);
     // const color = this.getAttribute('data-color');
     // context.strokeStyle = color;
