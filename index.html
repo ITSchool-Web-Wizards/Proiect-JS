@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div id="gameboard"></div>
-    <p>It is <span id="player"></span>'s go.</p>
-    <p id="info-display"></p>
-    
+    <div class="wrapper">
+        <div id="gameboard"></div>
+        <div class="container-text">
+            <p class="player-text">It is <span id="player"></span> to move.</p>
+        </div>
+        <div class="container-info">
+            <p id="info-display"></p>
+        </div>
+    </div>
     <script src="pieces.js"></script>
     <script src="script.js"></script>
 </body>
