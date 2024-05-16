@@ -27,7 +27,7 @@ const draw = (event) => {
   } else if (selectedTool === "eraserTool") {
     // Use eraser by drawing with transparency
     context.clearRect(x - 5, y - 5, 10, 10); // Clear a small square area centered around (x, y)
-  } else if ((selectedTool = "airbrushTool")) {
+  } else if ((selectedTool === "airbrushTool")) {
     // set the color and brush style
     context.stroke();
     // context.strokeWeigh = brushWidth;
