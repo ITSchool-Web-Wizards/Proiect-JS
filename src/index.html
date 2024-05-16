@@ -10,12 +10,9 @@
     <link href="icon.png" rel="apple-touch-icon" />
     <link href="site.webmanifest" rel="manifest" />
     <meta content="#fafafa" name="theme-color" />
-    <script
-      type="text/javascript"
-      src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
-    ></script>
 
     <script src="./js/main.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
 
     <link href="scss/styles.scss" rel="stylesheet" />
     <link href="./css/style.css" rel="stylesheet" />
@@ -70,6 +67,7 @@
           </li>
           <li>
             <img
+              id="undoBtn"
               alt="Undo"
               height="20rem"
               src="./img/navigation-bar/undo.svg"
@@ -78,6 +76,7 @@
           </li>
           <li>
             <img
+              id="rendoBtn"
               alt="Redo"
               height="20rem"
               src="./img/navigation-bar/redo.svg"
@@ -155,22 +154,10 @@
               src="img/brushes/airbrush.svg"
             />
           </div>
-          <div>
-            <!-- marker -->
-            <img
-              id="markerTool"
-              alt="marker"
-              class="tool-icon"
-              src="img/brushes/marker.svg"
-            />
-          </div>
         </div>
-        <h6 class="tools-header"><small class="text-muted">brushes</small></h6>
-        <!-- BRUSHES -->
-
-        <!-- SHAPES -->
+        <h6 class="brushes-header"><small class="text-muted">brushes</small></h6>
       </div>
-      <!-- BRUSHES -->
+        <!-- BRUSHES -->
 
       <!--SHAPES-->
       <div class="shapes">
@@ -181,14 +168,6 @@
               alt="line"
               class="tool-icon"
               src="./shapes/line.svg"
-            />
-          </div>
-          <div>
-            <img
-              id="pathShape"
-              alt="path"
-              class="tool-icon"
-              src="./shapes/path.svg"
             />
           </div>
           <div>
@@ -207,30 +186,6 @@
               src="./shapes/rectangle.svg"
             />
           </div>
-          <div>
-            <img
-              id="starShape"
-              alt="five pointed star"
-              class="tool-icon"
-              src="./shapes/polygon.svg"
-            />
-          </div>
-          <div>
-            <img
-              id="triangleShape"
-              alt="triangle"
-              class="tool-icon"
-              src="./shapes/triangle.svg"
-            />
-          </div>
-          <div>
-            <img
-              id="hexagonShape"
-              alt="hexagon"
-              class="tool-icon"
-              src="./shapes/hexagon.svg"
-            />
-          </div>
         </div>
         <h6 class="tools-header"><small class="text-muted">shapes</small></h6>
       </div>
@@ -245,56 +200,67 @@
               class="color-swatch"
               alt="white color"
               src="/img/color-palette/white.png"
+              data-color="#FFFFFF"
             />
             <img
               class="color-swatch"
               alt="black color"
               src="/img/color-palette/black.png"
+              data-color="#000000"
             />
             <img
               class="color-swatch"
               alt="gray color"
               src="/img/color-palette/gray.png"
+              data-color="#808080"
             />
             <img
               class="color-swatch"
               alt="red color"
               src="/img/color-palette/red.png"
+              data-color="#ED1C24"
             />
             <img
               class="color-swatch"
               alt="yellow color"
               src="/img/color-palette/yellow.png"
+              data-color="#FFF200"
             />
             <img
               class="color-swatch"
               alt="gold color"
               src="/img/color-palette/gold.png"
+              data-color="#FFC90E"
             />
             <img
               class="color-swatch"
               alt="orange color"
               src="/img/color-palette/orange.png"
+              data-color="#FF7F27"
             />
             <img
               class="color-swatch"
               alt="brown color"
               src="/img/color-palette/brown.png"
+              data-color="#B97A57"
             />
             <img
               class="color-swatch"
               alt="green color"
               src="/img/color-palette/green.png"
+              data-color="#22B14C"
             />
             <img
               class="color-swatch"
               alt="blue color"
               src="/img/color-palette/blue.png"
+              data-color="#0000FF"
             />
             <img
               class="color-swatch"
               alt="indigo color"
               src="/img/color-palette/indigo.png"
+              data-color="#3F48CC"
             />
           </div>
         </div>

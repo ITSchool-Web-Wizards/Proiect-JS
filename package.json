@@ -14,7 +14,10 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "canvas-designer": "^1.0.5",
+    "painterro": "^1.2.87",
+    "shapes": "^0.4.0"
   },
   "description": "paint-clone",
   "main": "vite.config.js",

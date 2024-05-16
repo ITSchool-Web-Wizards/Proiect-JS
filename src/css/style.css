@@ -451,6 +451,15 @@ h6 {
   text-align: center;
 }
 
+.brushes {
+  display: grid;
+}
+
+.brushes-header {
+  text-align: center;
+  margin-block-start: auto;
+}
+
 /* BRUSHES */
 
 
@@ -480,8 +489,13 @@ h6 {
   box-shadow: inset 0px 10px 9px 2px rgb(201, 224, 247);
 }
 
+.shapes {
+  display: grid;
+}
+
 .shapes-header {
   text-align: center;
+  margin-block-start: auto;
 }
 /* SHAPES */
 
@@ -503,11 +517,15 @@ h6 {
   height: 100%;
   max-width: 1.5rem;
   cursor: pointer;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 }
 
 .colors-palette-wrapper img:hover {
  border: 2px solid #c3c3c3;
+}
+
+.colors-palette-wrapper img.selected {
+  border: 2px solid #c3c3c3;
 }
 
 .colors-header {
