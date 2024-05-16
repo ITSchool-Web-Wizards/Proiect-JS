@@ -47,7 +47,7 @@ const draw = (event) => {
   // Draw on the canvas based on selected tool
   if (selectedTool === "pencilTool") {
     context.lineTo(x, y);
-    context.lineCap = "round";
+    context.lineCap = "square";
     context.stroke();
   } else if (selectedTool === "eraserTool") {
     // Use eraser by drawing with transparency
