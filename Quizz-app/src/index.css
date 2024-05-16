@@ -1,0 +1,23 @@
+:root {
+  --main-color: #12d0d6;
+  --secondary-color: #e0d6d5;
+  --text-color: #000000;
+  --correct-answer: green;
+  --wrong-answer: red;
+}
+
+* {
+  margin: 0;
+  font-family: 'fira-sans', sans-serif;
+}
+
+@font-face {
+  font-family: 'fira-sans';
+  src: url(/Users/cosminionescu/Documents/GitHub/Proiect-JS/Quizz-app/src/assets/fonts/Abel,Fira_Sans,Noto_Sans/Fira_Sans/FiraSans-Black.ttf);
+  src: url(/Users/cosminionescu/Documents/GitHub/Proiect-JS/Quizz-app/src/assets/fonts/Abel,Fira_Sans,Noto_Sans/Fira_Sans/FiraSans-Light.ttf);
+}
+
+body {
+  height: 100vh;
+  background-image: linear-gradient(to bottom, var(--secondary-color) , var(--main-color));
+}
