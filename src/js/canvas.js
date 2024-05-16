@@ -7,6 +7,7 @@ brushWidth = 3;
 //store drawing content
 let drawingHistory = [];
 let selectedTool = "";
+let prevMouseX, prevMouseY;
 
 window.addEventListener("load", () => {
   canvas.width = canvas.offsetWidth;
@@ -29,13 +30,10 @@ const draw = (event) => {
     context.clearRect(x - 5, y - 5, 10, 10); // Clear a small square area centered around (x, y)
   } else if ((selectedTool === "airbrushTool")) {
     // set the color and brush style
-    context.stroke();
+    // context.stroke();
     // context.strokeWeigh = brushWidth;
-
     // find the speed of the mouse movement
-    const speed =
-      Math.abs(event.mouseX - event.pmouseX) +
-      Math.abs(event.mouseY - event.pmouseY);
+    const speed = Math.abs(x - prevMouseX) + Math.abs(y - prevMouseY);
 
     // set minimum radius and spray density of spraypaint brush
     const minRadius = 10;
@@ -46,29 +44,38 @@ const draw = (event) => {
     const rSquared = r * r;
 
     // set the number of times we lerp the points in the for loop
-    const lerps = 10;
+    // const lerps = 10;
 
     // repeat the random points with lerping
-    for (let i = 0; i < lerps; i++) {
-      // find the lerped X and Y coordinates
-      const lerpX = this.lerp(event.mouseX, event.pmouseX, i / lerps);
-      const lerpY = this.lerp(event.mouseY, event.pmouseY, i / lerps);
-
-      // draw a bunch of random points within a circle
-      for (let j = 0; j < sprayDensity; j++) {
-        // pick a random position within the circle
-        const randX = random(-r, r);
-        const randY = random(-1, 1) * sqrt(rSquared - randX * randX);
-
-        // draw the random point
-        point(lerpX + randX, lerpY + randY);
+    // Repeat the random points with lerping
+    for (let i = 0; i < 10; i++) {
+        // Find the lerped X and Y coordinates
+        const lerpX = lerp(prevMouseX, x, i / 10);
+        const lerpY = lerp(prevMouseY, y, i / 10);
+  
+        // Draw a bunch of random points within a circle
+        for (let j = 0; j < sprayDensity; j++) {
+          // Pick a random position within the circle
+          const randX = Math.random() * (2 * r) - r;
+          const randY = Math.random() * (2 * r) - r;
+  
+          // Draw the random point
+          context.fillRect(lerpX + randX, lerpY + randY, 1, 1);
       }
     }
   }
+ // Store previous mouse position
+  prevMouseX = x;
+  prevMouseY = y;
 
   // Store drawing content
   drawingHistory.push({ x, y });
 };
+
+// Helper function to calculate linear interpolation
+const lerp = (start, end, amt) => {
+    return (1 - amt) * start + amt * end;
+  };
 
 const startDrawing = (event) => {
   isDrawing = true;
