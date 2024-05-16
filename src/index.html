@@ -12,6 +12,7 @@
     <meta content="#fafafa" name="theme-color" />
     <script src="./js/main.js" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+    <script src="https://cdn.rawgit.com/magicien/undo-canvas/v0.1.3/undo-canvas.js"></script>
     <link href="scss/styles.scss" rel="stylesheet" />
     <link href="./css/style.css" rel="stylesheet" />
   </head>
@@ -24,6 +25,7 @@
           </li>
           <li>
             <img
+              id="saveBtn"
               alt="Save"
               height="20rem"
               src="./img/navigation-bar/save.svg"
@@ -41,7 +43,7 @@
           </li>
           <li>
             <img
-              id="rendoBtn"
+              id="redoBtn"
               alt="Redo"
               height="20rem"
               src="./img/navigation-bar/redo.svg"
@@ -125,7 +127,7 @@
         <!-- BRUSHES -->
 
       <!--SHAPES-->
-      <div class="shapes">
+      <!-- <div class="shapes">
         <div class="shapes-wrapper">
           <div>
             <img
@@ -134,8 +136,8 @@
               class="tool-icon"
               src="./shapes/line.svg"
             />
-          </div>
-          <div>
+          </div> -->
+          <!-- <div>
             <img
               id="circlePath"
               alt="circle"
@@ -150,10 +152,10 @@
               class="tool-icon"
               src="./shapes/rectangle.svg"
             />
-          </div>
-        </div>
+          </div> -->
+        <!-- </div>
         <h6 class="tools-header"><small class="text-muted">shapes</small></h6>
-      </div>
+      </div> -->
       <!-- SHAPES -->
 
       <!-- COLORS -->
@@ -239,6 +241,6 @@
     <div class="canvas-container">
       <canvas id="canvasSignature"></canvas>
     </div>
-    <script src="./js/canvas.js"></script>
+    <script defer src="./js/canvas.js"></script>
   </body>
 </html>
