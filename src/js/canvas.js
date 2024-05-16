@@ -1,3 +1,4 @@
+
 const canvas = document.getElementById("canvasSignature");
 const context = canvas.getContext("2d");
 const toolIcons = document.querySelectorAll(".tool-icon");
@@ -7,6 +8,7 @@ const eraserTool = document.getElementById("eraserTool");
 const brushTool = document.getElementById("brushTool");
 const airbrushTool = document.getElementById("airbrushTool");
 
+
 let isDrawing = false;
 // brushWidth = 3;
 //store drawing content
@@ -15,17 +17,27 @@ let selectedTool = "";
 let selectedColor = ""
 let prevMouseX, prevMouseY;
 
+function canvasDimensions () {
+  context.canvas.width = window.innerWidth;
+  context.canvas.height = window.innerHeight;
+}
+
 window.addEventListener("load", () => {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+  // canvas.width = canvas.offsetWidth;
+  // canvas.height = canvas.offsetHeight;
+  canvasDimensions();
 });
 
+window.addEventListener("resize", () => {
+  canvasDimensions();
+})
+
 const draw = (event) => {
+  //if the mouse is not pressed then return from there
   if (!isDrawing) return;
 
     // Set the stroke color
     context.strokeStyle = selectedColor;
-    context.fill = 3;
 
   // Store the scaled coordinates
   const x = event.offsetX * (canvas.width / window.innerWidth);
@@ -34,14 +46,15 @@ const draw = (event) => {
   // Draw on the canvas based on selected tool
   if (selectedTool === "pencilTool") {
     context.lineTo(x, y);
+    context.lineCap = 'round'
     context.stroke();
   } else if (selectedTool === "eraserTool") {
     // Use eraser by drawing with transparency
     context.clearRect(x - 5, y - 5, 10, 10); // Clear a small square area centered around (x, y)
   } else if (selectedTool === "airbrushTool") {
     // set the color and brush style
-    context.strokeStyle = "##ED1C24";
-    console.log(context.strokeStyle);
+    context.strokeStyle = selectedColor;
+    // console.log(context.strokeStyle);
     // context.strokeWeigh = brushWidth;
     // find the speed of the mouse movement
     const speed = Math.abs(x - prevMouseX) + Math.abs(y - prevMouseY);
@@ -74,13 +87,19 @@ const draw = (event) => {
           context.fillRect(lerpX + randX, lerpY + randY, 1, 1);
       }
     }
+  } else if(selectedTool === 'brushTool') {
+    context.stroke();
+    context.lineTo(x, y);
+    context.lineCap = 'round'
+    context.lineJoin = 'round';
+    context.lineWidth = 10;
   }
  // Store previous mouse position
   prevMouseX = x;
   prevMouseY = y;
 
   // Store drawing content
-  drawingHistory.push({ x, y });
+  // drawingHistory.push({ x, y });
 };
 
 // Helper function to calculate linear interpolation
@@ -100,48 +119,11 @@ function stopDrawing() {
   context.beginPath();
 }
 
-function resizeCanvas() {
-  // Store the current drawing before resizing
-  const tempHistory = drawingHistory;
-
-  // Clear the canvas and resize it
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  context.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Redraw the stored drawing on the resized canvas
-  drawingHistory.forEach(({ x, y }, index) => {
-    if (index === 0) {
-      context.beginPath();
-      context.moveTo(
-        x * (canvas.width / window.innerWidth),
-        y * (canvas.height / window.innerHeight)
-      );
-    } else {
-      context.lineTo(
-        x * (canvas.width / window.innerWidth),
-        y * (canvas.height / window.innerHeight)
-      );
-      context.stroke();
-    }
-  });
-
-  // Restore the drawing history
-  drawingHistory = tempHistory;
-}
-
-
-
 // Drawing events
 canvas.addEventListener("mousedown", startDrawing);
 canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("mouseup", stopDrawing);
 canvas.addEventListener("mouseout", stopDrawing);
-// Window resize event
-window.addEventListener("resize", resizeCanvas);
-
-// Call window resize function
-resizeCanvas();
 
 // Select Tools Events
 toolIcons.forEach((icon) => {
@@ -165,7 +147,7 @@ colorSwatches.forEach(colorSwatch => {
         });
         this.classList.add('selected');
         selectedColor = this.getAttribute('data-color');
-        console.log(selectedColor);
+        // console.log(selectedColor);
         // const color = this.getAttribute('data-color');
         // context.strokeStyle = color;
     })
