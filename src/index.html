@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Paint Simple</title>
+    <meta content="" name="description" />
+    <link href="/favicon.ico" rel="icon" sizes="any" />
+    <link href="/icon.svg" rel="icon" type="image/svg+xml" />
+    <link href="icon.png" rel="apple-touch-icon" />
+    <link href="site.webmanifest" rel="manifest" />
+    <meta content="#fafafa" name="theme-color" />
+    <script src="./js/main.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+    <script src="https://cdn.rawgit.com/magicien/undo-canvas/v0.1.3/undo-canvas.js"></script>
+    <link href="scss/styles.scss" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="navigation" role="navigation">
+        <ul>
+          <li>
+            <img alt="paint icon" height="auto" src="icon.png" width="23rem" />
+          </li>
+          <li>
+            <img
+              id="saveBtn"
+              alt="Save"
+              height="20rem"
+              src="./img/navigation-bar/save.svg"
+              width="20rem"
+            />
+          </li>
+          <li>
+            <img
+              id="undoBtn"
+              alt="Undo"
+              height="20rem"
+              src="./img/navigation-bar/undo.svg"
+              width="20rem"
+            />
+          </li>
+          <li>
+            <img
+              id="redoBtn"
+              alt="Redo"
+              height="20rem"
+              src="./img/navigation-bar/redo.svg"
+              width="20rem"
+            />
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- TOOLS -->
+    <div class="text-center toolbar">
+      <div class="tools">
+        <div class="tool-wrapper">
+          <div>
+            <!-- pencil -->
+            <img
+              id="pencilTool"
+              class="tool-icon"
+              alt="pencil-tool"
+              src="img/tools/pencil-tool.svg"
+            />
+          </div>
+          <!-- <div>
+            fill with color
+            <img
+              id="bucketTool"
+              class="tool-icon"
+              alt="paint-bucket-tool"
+              src="img/tools/paint-bucket-tool.svg"
+            />
+          </div> -->
+          <!-- <div>
+            text
+            <img
+              id="textTool"
+              class="tool-icon"
+              alt="text-tool"
+              src="img/tools/text-tool.svg"
+            />
+          </div> -->
+          <div>
+            <!-- eraser -->
+            <img
+              id="eraserTool"
+              class="tool-icon"
+              alt="eraser-tool"
+              src="img/tools/eraser-tool.svg"
+            />
+          </div>
+        </div>
+        <h6 class="tools-header"><small class="text-muted">tools</small></h6>
+      </div>
+      <!-- TOOLS -->
+
+      <!-- BRUSHES -->
+      <div class="brushes">
+        <div class="brushes-wrapper">
+          <div>
+            <!-- brush -->
+            <img
+              id="brushTool"
+              alt="brush"
+              class="tool-icon"
+              src="img/brushes/brush.svg"
+            />
+          </div>
+
+          <div>
+            <!-- airbrush -->
+            <img
+              id="airbrushTool"
+              alt="airbrush"
+              class="tool-icon"
+              src="img/brushes/airbrush.svg"
+            />
+          </div>
+        </div>
+        <h6 class="brushes-header"><small class="text-muted">brushes</small></h6>
+      </div>
+        <!-- BRUSHES -->
+
+      <!--SHAPES-->
+      <!-- <div class="shapes">
+        <div class="shapes-wrapper">
+          <div>
+            <img
+              id="lineShape"
+              alt="line"
+              class="tool-icon"
+              src="./shapes/line.svg"
+            />
+          </div> -->
+          <!-- <div>
+            <img
+              id="circlePath"
+              alt="circle"
+              class="tool-icon"
+              src="./shapes/circle.svg"
+            />
+          </div>
+          <div>
+            <img
+              id="rectangleShape"
+              alt="rectangle"
+              class="tool-icon"
+              src="./shapes/rectangle.svg"
+            />
+          </div> -->
+        <!-- </div>
+        <h6 class="tools-header"><small class="text-muted">shapes</small></h6>
+      </div> -->
+      <!-- SHAPES -->
+
+      <!-- COLORS -->
+      <div class="colors">
+        <!--    display using grid  -->
+        <div class="colors-palette">
+          <div class="colors-palette-wrapper">
+            <img
+              class="color-swatch"
+              alt="white color"
+              src="/img/color-palette/white.png"
+              data-color="#FFFFFF"
+            />
+            <img
+              class="color-swatch"
+              alt="black color"
+              src="/img/color-palette/black.png"
+              data-color="#000000"
+            />
+            <img
+              class="color-swatch"
+              alt="gray color"
+              src="/img/color-palette/gray.png"
+              data-color="#808080"
+            />
+            <img
+              class="color-swatch"
+              alt="red color"
+              src="/img/color-palette/red.png"
+              data-color="#ED1C24"
+            />
+            <img
+              class="color-swatch"
+              alt="yellow color"
+              src="/img/color-palette/yellow.png"
+              data-color="#FFF200"
+            />
+            <img
+              class="color-swatch"
+              alt="gold color"
+              src="/img/color-palette/gold.png"
+              data-color="#FFC90E"
+            />
+            <img
+              class="color-swatch"
+              alt="orange color"
+              src="/img/color-palette/orange.png"
+              data-color="#FF7F27"
+            />
+            <img
+              class="color-swatch"
+              alt="brown color"
+              src="/img/color-palette/brown.png"
+              data-color="#B97A57"
+            />
+            <img
+              class="color-swatch"
+              alt="green color"
+              src="/img/color-palette/green.png"
+              data-color="#22B14C"
+            />
+            <img
+              class="color-swatch"
+              alt="blue color"
+              src="/img/color-palette/blue.png"
+              data-color="#0000FF"
+            />
+            <img
+              class="color-swatch"
+              alt="indigo color"
+              src="/img/color-palette/indigo.png"
+              data-color="#3F48CC"
+            />
+          </div>
+        </div>
+        <h6 class="tools-header">
+          <small class="text-muted">colors</small>
+        </h6>
+      </div>
+      <!-- COLORS -->
+    </div>
+
+    <div class="canvas-container">
+      <canvas id="canvasSignature"></canvas>
+    </div>
+    <script defer src="./js/canvas.js" type="module"></script>
+  </body>
+</html>
