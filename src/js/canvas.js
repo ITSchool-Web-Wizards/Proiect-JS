@@ -167,7 +167,7 @@ eraserTool.addEventListener("click", function () {
 //brush
 brushTool.addEventListener("click", function () {
   selectedTool = "brushTool";
-  context.globalCompositeOperation = "darken";
+  context.globalCompositeOperation = "multiply";
 });
 //spray
 airbrushTool.addEventListener("click", function () {
