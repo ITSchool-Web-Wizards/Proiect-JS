@@ -1,0 +1,107 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient( #00467F, #A5CC82);
+}
+
+#gameboard{
+    width:640px;
+    height:640px;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 2px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.square{
+    width: 80px;
+    height:80px;
+    position:relative;
+}
+
+.square svg{
+    width: 60px;
+    height:60px;
+    margin:10px;
+    position: relative;
+    z-index: -9;
+}
+
+path{
+    position: relative;
+    z-index: -10;
+}
+
+.piece{
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+}
+
+.white-green{
+    background-color: rgb(173,189,143);
+}
+
+.black-green{
+    background-color: rgb(111,143,114);
+}
+
+.white{
+    fill:white;
+}
+
+.black{
+    fill:black;
+}
+
+.info-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container-text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.container-info{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 650px) {
+    #gameboard {
+        width:400px;
+        height:400px;
+    }
+
+    .square{
+        width: 50px;
+        height:50px;
+    }
+    
+    .square svg{
+        width: 30px;
+        height:30px;
+    }
+
+    .container-text{
+        font-size: 14px;
+    }
+    
+    .container-info{
+        font-size: 14px;
+    }
+}
